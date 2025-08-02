@@ -23,6 +23,11 @@ app.use("/api/v1/users", userRoutes);
 
 const PORT = process.env.PORT;
 
+// Health check path here
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok", message: "API is healthy" });
+});
+
 app.get("/", (req, res) => {
   res.send("Welcome to the She Foundation API");
 });
