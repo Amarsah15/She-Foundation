@@ -1,6 +1,6 @@
-import Navbar from "../components/Navbar";
-import AnimatedNumberRandom from "../components/AnimatedNumberRandomDemo";
-import { useAuthStore } from "../stores/useAuthStore";
+import Nav from "../components/Nav.jsx";
+import AnimatedNumberRandom from "../components/AnimatedNumberRandomDemo.jsx";
+import { useAuthStore } from "../stores/useAuthStore.js";
 import toast from "react-hot-toast";
 
 const REWARDS = [
@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   return (
     <div className="mx-auto p-4">
-      <Navbar />
+      <Nav />
       <div className="p-6 max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold text-center mb-6">Dashboard</h1>
 

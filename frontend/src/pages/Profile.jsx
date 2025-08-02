@@ -1,7 +1,7 @@
 import React from "react";
-import { useAuthStore } from "../stores/useAuthStore";
-import AnimatedNumberRandom from "../components/AnimatedNumberRandomDemo";
-import Navbar from "../components/Navbar";
+import { useAuthStore } from "../stores/useAuthStore.js";
+import AnimatedNumberRandom from "../components/AnimatedNumberRandomDemo.jsx";
+import Nav from "../components/Nav.jsx";
 
 const Profile = () => {
   const { authUser } = useAuthStore();
@@ -9,7 +9,7 @@ const Profile = () => {
 
   return (
     <div className="mx-auto p-4">
-      <Navbar />
+      <Nav />
       <div className="min-h-screen px-4 py-10 bg-base-100 text-base-content">
         <div className="max-w-4xl mx-auto">
           {/* Profile Picture & Name */}

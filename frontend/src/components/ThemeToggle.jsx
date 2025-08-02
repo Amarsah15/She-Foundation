@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useThemeStore } from "../stores/useThemeStore";
+import { useThemeStore } from "../stores/useThemeStore.js";
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useThemeStore();

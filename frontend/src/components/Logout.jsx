@@ -1,8 +1,9 @@
 import React from "react";
-import { useAuthStore } from "../stores/useAuthStore";
+import { useAuthStore } from "../stores/useAuthStore.js";
 
 const Logout = ({ children }) => {
   const { logout } = useAuthStore();
+
 
   const onLogout = async () => {
     try {

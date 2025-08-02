@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { LogOut, Trophy, User } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
-import Logout from "./Logout";
-import { useAuthStore } from "../stores/useAuthStore";
+import ThemeToggle from "./ThemeToggle.js";
+import Logout from "./Logout.jsx";
+import { useAuthStore } from "../stores/useAuthStore.js";
 
-const Navbar = () => {
+const Nav = () => {
   const { authUser } = useAuthStore();
 
   return (
@@ -121,4 +121,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Nav;

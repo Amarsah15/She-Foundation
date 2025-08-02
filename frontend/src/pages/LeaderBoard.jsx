@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useAuthStore } from "../stores/useAuthStore";
-import Navbar from "../components/Navbar";
+import { useAuthStore } from "../stores/useAuthStore.js";
+import Nav from "../components/Nav.jsx";
 
 const LeaderBoard = () => {
   const { getLeaderboard, leaderboardData } = useAuthStore();
@@ -13,7 +13,7 @@ const LeaderBoard = () => {
 
   return (
     <div className="mx-auto p-4">
-      <Navbar />
+      <Nav />
       <div className="max-w-4xl mx-auto mt-10 px-4">
         <h1 className="text-4xl font-extrabold text-center mb-8 text-primary">
           🏆 Top Leaderboard
