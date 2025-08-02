@@ -17,7 +17,7 @@ A modern full-stack dashboard for She Foundation, tracking donations, rewards/un
 
 |          Dashboard          |          Leaderboard          |          Profile          |
 | :-------------------------: | :---------------------------: | :-----------------------: |
-| ![](./public/dashboard.png) | ![](./public/leaderboard.png) | ![](./public/profile.png) |
+| ![](./frontend/public/dashboard.png) | ![](./frontend/public/leaderboard.png) | ![](./frontend/public/profile.png) |
 
 ## 🏗️ Tech Stack
 
