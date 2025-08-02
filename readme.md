@@ -15,13 +15,9 @@ A modern full-stack dashboard for She Foundation interns, tracking donations, re
 
 ## 📸 Screenshots
 
-<!-- Replace the image links below with actual screenshot URLs -->
-
-| Dashboard | Leaderboard | Profile | 
-| :-------- | :---------- | :------ | 
-|           |             |         | 
-
-./public/dashboard.png | ./public/leaderboard.png | ./public/profile.png 
+|          Dashboard          |          Leaderboard          |          Profile          |
+| :-------------------------: | :---------------------------: | :-----------------------: |
+| ![](./public/dashboard.png) | ![](./public/leaderboard.png) | ![](./public/profile.png) |
 
 ## 🏗️ Tech Stack
 
