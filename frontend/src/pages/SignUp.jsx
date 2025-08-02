@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router-dom";
 import { Code, Eye, EyeOff, Loader2, Lock, Mail } from "lucide-react";
 import { useAuthStore } from "../stores/useAuthStore.js";
+import ThemeToggle from "../components/ThemeToggle.jsx";
 
 const signUpSchema = z.object({
   email: z.string().email("Enter a valid email"),
@@ -33,6 +34,9 @@ const SignUp = () => {
   };
   return (
     <div>
+      <span className="absolute top-1 right-2">
+        <ThemeToggle />
+      </span>
       <div className="flex flex-col justify-center items-center p-6 sm:p-12">
         <div className="w-full max-w-md space-y-8">
           {/* Logo */}

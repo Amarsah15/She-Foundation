@@ -4,6 +4,6 @@ export const useThemeStore = create((set) => ({
   theme: "fantasy",
   toggleTheme: () =>
     set((state) => ({
-      theme: state.theme === "fantasy" ? "dracula" : "fantasy",
+      theme: state.theme === "fantasy" ? "dark" : "fantasy",
     })),
 }));

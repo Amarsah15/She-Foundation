@@ -76,17 +76,28 @@ export const signUp = async (req, res) => {
 
     // Generate JWT tokenconst
     const token = jwt.sign(
-      { id: newUser.id, email: newUser.email },
+      {
+        id: newUser.id,
+        email: newUser.email,
+        name: newUser.name,
+        profilePicture: newUser.profilePicture,
+        referralCode: newUser.referralCode,
+        amountRaised: user.amountRaised,
+        isAdmin: user.isAdmin,
+        referralCount: user.referralCount,
+        bio: user.bio || "",
+      },
       process.env.JWT_SECRET,
       {
         expiresIn: "7d",
       }
     );
 
-    res.cookie("jwt", token, {
+    res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "None",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      secure: process.env.NODE_ENV === "production", // true on prod
+      sameSite: "Lax", // or 'None' with secure true for cross-site
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
     res
@@ -121,16 +132,28 @@ export const login = async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign(
-      { id: user._id, email: user.email },
+      {
+        id: user._id,
+        email: user.email,
+        name: user.name,
+        profilePicture: user.profilePicture,
+        referralCode: user.referralCode,
+        referralCount: user.referralCount,
+        amountRaised: user.amountRaised,
+        isAdmin: user.isAdmin,
+        referralCount: user.referralCount,
+        bio: user.bio || "",
+      },
       process.env.JWT_SECRET,
       {
         expiresIn: "7d",
       }
     );
 
-    res.cookie("jwt", token, {
+    res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "none",
+      secure: process.env.NODE_ENV === "production", // true on prod
+      sameSite: "Lax", // or 'None' with secure true for cross-site
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
@@ -175,10 +198,9 @@ export const getLeaderboard = async (req, res) => {
     // Fetch users sorted by total donations if total donations is greater than 0 and if total donations is equal then sort by referral count in descending order
     const users = await User.find()
       .sort({
-        totalDonations: -1,
-        referralCount: -1,
+        amountRaised: -1,
       })
-      .select("name totalDonations referralCount profilePicture");
+      .select("name amountRaised");
     res.status(200).json({
       success: true,
       message: "Leaderboard fetched successfully",
@@ -194,7 +216,7 @@ export const getLeaderboard = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-  res.clearCookie("jwt");
+  res.clearCookie("token");
   res.status(200).json({ success: true, message: "Logged out successfully" });
 };
 

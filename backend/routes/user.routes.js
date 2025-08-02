@@ -13,7 +13,7 @@ import { auth, isAdmin } from "../middlewares/auth.middleware.js";
 const userRoutes = express.Router();
 
 userRoutes.get("/getUserDetails", auth, getUser);
-userRoutes.get("/leaderboard", auth, getLeaderboard);
+userRoutes.get("/leaderboard", getLeaderboard);
 userRoutes.post("/login", login);
 userRoutes.post("/signup", signUp);
 userRoutes.post("/logout", auth, logout);

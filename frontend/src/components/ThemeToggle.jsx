@@ -11,12 +11,7 @@ const ThemeToggle = () => {
 
   return (
     <label className="toggle text-base-content">
-      <input
-        onChange={toggleTheme}
-        type="checkbox"
-        value="synthwave"
-        className="theme-controller"
-      />
+      <input onChange={toggleTheme} type="checkbox" value="synthwave" className="theme-controller" />
 
       <svg
         aria-label="sun"

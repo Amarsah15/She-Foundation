@@ -1,22 +1,21 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import LeaderBoard from "./pages/LeaderBoard";
 import { useAuthStore } from "./stores/useAuthStore";
 import { useEffect } from "react";
 import { Loader } from "lucide-react";
+import Profile from "./pages/Profile";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
 
   useEffect(() => {
     checkAuth();
-  }, [checkAuth]);
-
-  console.log("Auth User:", authUser);
+  }, []);
 
   if (isCheckingAuth && !authUser) {
     return (
@@ -33,7 +32,12 @@ const App = () => {
         <Route
           index
           path="/"
-          element={authUser ? <Home /> : <Navigate to={"/login"} />}
+          element={authUser ? <Dashboard /> : <Navigate to={"/login"} />}
+        />
+        <Route
+          index
+          path="/profile"
+          element={authUser ? <Profile /> : <Navigate to={"/login"} />}
         />
         <Route
           path="/login"
@@ -43,7 +47,10 @@ const App = () => {
           path="/signup"
           element={!authUser ? <SignUp /> : <Navigate to={"/"} />}
         />
-        <Route path="/leaderboard" element={<LeaderBoard />} />
+        <Route
+          path="/leaderboard"
+          element={authUser ? <LeaderBoard /> : <Navigate to={"/login"} />}
+        />
         {/* This can be replaced with a NotFound component */}
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
