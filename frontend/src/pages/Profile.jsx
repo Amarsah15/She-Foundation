@@ -1,13 +1,12 @@
 import React from "react";
 import { useAuthStore } from "../stores/useAuthStore";
-import AnimatedNumberRandom from "../components/ui/AnimatedNumberRandomDemo";
-import ThemeToggle from "../components/ThemeToggle";
+import AnimatedNumberRandom from "../components/AnimatedNumberRandomDemo";
 import Navbar from "../components/Navbar";
 
 const Profile = () => {
   const { authUser } = useAuthStore();
   const user = authUser;
-  
+
   return (
     <div className="mx-auto p-4">
       <Navbar />

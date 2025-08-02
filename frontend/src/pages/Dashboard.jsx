@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-import AnimatedNumberRandom from "../components/ui/AnimatedNumberRandomDemo";
+import AnimatedNumberRandom from "../components/AnimatedNumberRandomDemo";
 import { useAuthStore } from "../stores/useAuthStore";
 import toast from "react-hot-toast";
 
