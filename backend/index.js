@@ -12,7 +12,13 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://she-foundation.vercel.app",
+      "https://she-foundation.onrender.com",
+      "https://she-foundation-amarsah15s-projects.vercel.app",
+      "https://she-foundation-git-main-amarsah15s-projects.vercel.app",
+    ],
     credentials: true,
   })
 );
