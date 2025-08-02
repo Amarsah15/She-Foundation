@@ -1,6 +1,6 @@
-# 🚀 She Foundation Intern Dashboard
+# 🚀 She Foundation Dashboard
 
-A modern full-stack dashboard for She Foundation interns, tracking donations, rewards/unlockables, and leaderboard rankings.
+A modern full-stack dashboard for She Foundation, tracking donations, rewards/unlockables, and leaderboard rankings.
 
 ## ✨ Features
 
