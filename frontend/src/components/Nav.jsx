@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { LogOut, Trophy, User } from "lucide-react";
-import ThemeToggle from "./ThemeToggle.js";
+import ThemeToggle from "./ThemeToggle.jsx";
 import Logout from "./Logout.jsx";
 import { useAuthStore } from "../stores/useAuthStore.js";
 
