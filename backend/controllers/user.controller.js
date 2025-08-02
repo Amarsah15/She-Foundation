@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { isStrongPassword, isValidEmail } from "../utils/validators.js";
+import { isValidEmail } from "../utils/validators.js";
 
 export const signUp = async (req, res) => {
   try {
@@ -44,12 +44,7 @@ export const signUp = async (req, res) => {
         .status(400)
         .json({ message: "Password must be at least 8 characters" });
     }
-    if (!isStrongPassword(password)) {
-      return res.status(400).json({
-        message:
-          "Password must contain at least one uppercase letter, one lowercase letter, and one number",
-      });
-    }
+
     // Check if email is valid
     if (!isValidEmail(email)) {
       return res.status(400).json({ message: "Invalid email format" });
@@ -80,9 +75,13 @@ export const signUp = async (req, res) => {
     const newUser = await user.save();
 
     // Generate JWT tokenconst
-    const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
-    });
+    const token = jwt.sign(
+      { id: newUser.id, email: newUser.email },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "7d",
+      }
+    );
 
     res.cookie("jwt", token, {
       httpOnly: true,
@@ -121,9 +120,13 @@ export const login = async (req, res) => {
     }
 
     // Generate JWT token
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
-    });
+    const token = jwt.sign(
+      { id: user._id, email: user.email },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "7d",
+      }
+    );
 
     res.cookie("jwt", token, {
       httpOnly: true,
@@ -193,4 +196,34 @@ export const getLeaderboard = async (req, res) => {
 export const logout = (req, res) => {
   res.clearCookie("jwt");
   res.status(200).json({ success: true, message: "Logged out successfully" });
+};
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find({}).select("-password");
+    res.status(200).json({
+      success: true,
+      message: "Users fetched successfully",
+      users,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Error in fetching users",
+      error: error.message,
+    });
+  }
+};
+
+export const check = async (req, res) => {
+  try {
+    res.status(200).json({
+      success: true,
+      message: "User is authenticated",
+      user: req.user,
+    });
+  } catch (error) {
+    console.error("Error checking authentication:", error);
+    return res.status(401).json({ error: "Unauthorized" });
+  }
 };
