@@ -124,3 +124,21 @@ app.listen(PORT, () => {
 });
 
 export default app;
+
+const keepAlive = () => {
+  setInterval(async () => {
+    try {
+      const res = await axios.get(
+        "https://she-foundation.onrender.com/health",
+        {
+          timeout: 4000,
+        }
+      );
+      console.log("✅ Ping successful:", res.status);
+    } catch (error) {
+      console.warn("⚠️ Ping failed:", error);
+    }
+  }, 1000 * 60 * 10); // every 10 minutes
+};
+
+keepAlive();
